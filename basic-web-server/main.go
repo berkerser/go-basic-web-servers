@@ -8,7 +8,9 @@ import (
 )
 
 const (
-	port = "PORT"
+	port          = "PORT"
+	key           = "key.pem"
+	certification = "cert.pem"
 )
 
 func rootHandle(w http.ResponseWriter, r *http.Request) {
@@ -18,5 +20,14 @@ func rootHandle(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/", rootHandle)
 
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv(port)), nil))
+	// To gain information about inputs for error debugging
+	log.Println("Listening on:")
+	log.Printf("PORT  : %s\n", os.Getenv(port))
+	log.Printf("ADRESS: /\n")
+
+	// // To create http server
+	// log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv(port)), nil))op
+
+	// To create https server
+	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", os.Getenv(port)), certification, key, nil))
 }

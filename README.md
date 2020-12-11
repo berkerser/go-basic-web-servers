@@ -1,2 +1,6 @@
-# go-basic-web-servers
-Workplace for me to create golang web servers depends on my needs.
+# Go Basic Web Servers
+It's a workplace for me to develop web servers written in go language.
+
+Currently it contains web server examples below:
+
+- Basic web server
