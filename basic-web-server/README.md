@@ -27,3 +27,24 @@ go run %GOROOT%\\src\\crypto\\tls\\generate_cert.go --host localhost
 
 > Also --host parameter is required. It needs a value as hostname or and IP adress. So tested writing localhost.
 
+## Enviroment Variables
+### Warning
+> This section is for people who don't know about enviroment variables. If you know about how to set enviroment variables you don't need to look for it.
+
+Enviroment variables (in short env) are dynamic values that will affect processes behaviours. This variables can contain values we want to hide or some shortcut for programs. In this project i try to hide values that i think it should be hide or practicising env values in the code. For example:
+
+go
+```go
+log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", os.Getenv(port)), certification, key, nil))
+```
+
+in this particular code we don't need to hide the port if we will publish this web server in default port. But for example if we are connecting a database with write rights, we should hide how to connect to database. This could lead to data manipulations from unknown sources.
+
+In following subsections i will explain way to assign enviroment variables.
+
+### Note
+> Assigning new env, changing currently used env will not change env of currently running processes. That's why these values are dynamic.
+
+> Also assigning new env, changing currently used env will not change env of currently running terminals. You need to open new terminals to affect changes.
+
+> If you are doing assignments in terminal you won't need to open new terminal. Also if you didn't set it as global env or user level env, this values will not be saved so you can't access this values from another terminal. (Note: I could be wrong about this, so it could be need to be changed.).
