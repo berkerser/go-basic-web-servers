@@ -6,3 +6,4 @@ Here, there are tasks that i will do on the current project. These are:
 - [ ] Need to explain enviroment variable
 - [x] Seperate tasks to a different md
 - [ ] Send different content types (e.g. json,text,css,html)
+- [ ] Check grammer for documentation.
