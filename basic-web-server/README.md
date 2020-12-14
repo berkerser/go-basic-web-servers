@@ -48,3 +48,30 @@ In following subsections i will explain way to assign enviroment variables.
 > Also assigning new env, changing currently used env will not change env of currently running terminals. You need to open new terminals to affect changes.
 
 > If you are doing assignments in terminal you won't need to open new terminal. Also if you didn't set it as global env or user level env, this values will not be saved so you can't access this values from another terminal. (Note: I could be wrong about this, so it could be need to be changed.).
+
+### 1. Visual Studio Code
+
+If you're using integrated terminal that Visual Studio Code support, you can set env values inside of vscode. You can use instruction below to assign new env values:
+
+1. Open command pallete (View>Command Pallete)
+2. Type settings.json
+3. Select Preferences: Open Settings (JSON)
+4. Please enter your env variables to following json section.
+
+#### Windows
+```json
+{
+    "terminal.integrated.env.windows": {
+        "[YOUR ENV VARIABLE]": "[YOUR ENV VALUE]"
+    }
+}
+```
+
+#### MacOS
+```json
+{
+    "terminal.integrated.env.osx": {
+        "[YOUR ENV VARIABLE]": "[YOUR ENV VALUE]"
+    }
+}
+```
