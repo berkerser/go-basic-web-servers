@@ -18,16 +18,19 @@ func rootHandle(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	http.HandleFunc("/", rootHandle)
+	mux := http.NewServeMux()
+
+	helloJSON(mux)
+	// TODO need to handle root better
+	mux.HandleFunc("/", rootHandle)
 
 	// To gain information about inputs for error debugging
 	log.Println("Listening on:")
 	log.Printf("PORT  : %s\n", os.Getenv(port))
-	log.Printf("ADRESS: /\n")
 
 	// // To create http server
 	// log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv(port)), nil))op
 
 	// To create https server
-	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", os.Getenv(port)), certification, key, nil))
+	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", os.Getenv(port)), certification, key, mux))
 }
