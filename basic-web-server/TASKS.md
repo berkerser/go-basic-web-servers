@@ -8,3 +8,4 @@ Here, there are tasks that i will do on the current project. These are:
 - [ ] Try to send different different discrete MIME types
 - [ ] Try to send multipart MIME types
 - [ ] Check grammer for documentation
+- [ ] Redirect http to https
