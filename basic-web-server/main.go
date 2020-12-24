@@ -4,16 +4,18 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 )
 
 const (
-	port          = "PORT"
+	addr          = ":443"
+	httpAddr      = ":80"
 	key           = "key.pem"
 	certification = "cert.pem"
 )
 
 func rootHandle(w http.ResponseWriter, r *http.Request) {
+	log.Println("Printing HTTPS.")
+	fmt.Println()
 	fmt.Fprintf(w, "Hello World!")
 }
 
@@ -24,13 +26,10 @@ func main() {
 	// TODO need to handle root better
 	mux.HandleFunc("/", rootHandle)
 
-	// To gain information about inputs for error debugging
-	log.Println("Listening on:")
-	log.Printf("PORT  : %s\n", os.Getenv(port))
-
-	// // To create http server
-	// log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", os.Getenv(port)), nil))op
+	// To create http server
+	// go log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", httpPort), http.HandlerFunc(redirectTLS)))
+	go redirectToHTTPS()
 
 	// To create https server
-	log.Fatal(http.ListenAndServeTLS(fmt.Sprintf(":%s", os.Getenv(port)), certification, key, mux))
+	log.Fatal(http.ListenAndServeTLS(addr, certification, key, mux))
 }
