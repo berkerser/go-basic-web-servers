@@ -25,4 +25,4 @@ go run %GOROOT%\\src\\crypto\\tls\\generate_cert.go --host localhost
 ### Note
 > GOROOT is an enviroment variables of your operating system. It stores currently installed go location. If GOROOT enviroment variable isn't available please enter installed location of go.
 
-> Also --host parameter is required. It needs a value as hostname or and IP adress. So tested writing localhost.
+> Also --host parameter is required. It needs a value as hostname or and IP adress. I only tested host parameter as localhost.
