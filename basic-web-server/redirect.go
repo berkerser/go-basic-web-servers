@@ -13,7 +13,7 @@ func redirectToHTTPS() {
 			u := r.URL
 			u.Scheme = "https"
 
-			// If there request is from local.
+			// If there is request from local.
 			if u.Host == "" {
 				u.Host = os.Getenv("IP")
 			}
